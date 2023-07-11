@@ -1,0 +1,33 @@
+#main {
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
+}
+
+.carre {
+    width: 200px;
+    height: 200px;
+    background-color: rgb(136, 174, 136);
+    color: white;
+    font-size: 3em;
+    line-height: 200px;
+    text-align: center;
+}
+
+.carre-clicked {
+    background-color: red;
+    transform: scale(0.9);
+    animation: appear 1s;
+}
+
+@keyframes appear
+{
+    from
+    {
+        transform: scale(0.9) rotate(0deg)
+    }
+    to
+    {
+        transform: scale(0.9) rotate(45deg);
+    }
+}
