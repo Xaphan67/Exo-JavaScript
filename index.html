@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="board"></div>
+        <script>
+            function shuffleChildren(parent) // Change aléatoirement l'ordre des éléments enfant d'un élément parent passé en paramèttre
+            {
+                let children = parent.children
+                let i = children.length, k, temp
+                while (--i > 0) // on boucle tant que 1 oté de i est toujours positif
+                {
+                    // k stocke un nombre aléatoire basé sur i
+                    k = Math.floor(Math.random() * (i + 1))
+
+                    // temp pointe temporairement l'élément à la position k dans parent
+                    temp = parent.children[k]
+
+                    // remplace l'élément k pointé temporairement à la fin du contenu de parent
+                    parent.appendChild(temp)
+                }
+            }
+
+            function showReaction(type, clickedBox) // Assigne une classe à une boîte
+            {
+                clickedBox.classList.add(type)
+                if (type !== "success") // Ajoute un temps d'attente si le type n'est pas success
+                {
+                    setTimeout(function()
+                    {
+                        clickedBox.classList.remove(type) // Retire la classe ajoutée précedement
+                        if (type == "error")
+                        {
+                            shuffleChildren(board) // Change à nouveau l'ordre des boîtes en cas d'erreur
+                        }
+                    }, 800)
+                }
+            }
+
+            const box = document.createElement("div") // Crée un nouvel élément Div, stocké dans la constante box
+            box.classList.add("box") // Ajoute une classe à cet élément
+
+            const board = document.querySelector("#board") // Séléctionne l'élément déja existant d'id board
+
+            let totalBoxes = prompt("Nombre de boîtes ?")
+
+            let nb = 1 // Numéro de la bôitesur laquelle le joueur doit cliquer
+
+            for (let i = 1; i <= totalBoxes; i++) // boucle for, i vaut de 1 à totalBoxes
+            {
+                let newbox = box.cloneNode() // clone l'objet box dans newbox
+                newbox.innerText = i // Lui ajoute un texte égal à i
+                board.appendChild(newbox) // L'ajoute en tant qu'enfant (= à l'intérieur) à l'élément board
+
+                newbox.addEventListener("click", function() // Ajoute un écouteur d'évènement à l'élément
+                {
+                    if (i == nb) // Si le joueur clique sur la boîte avec le numéro attendu
+                    {
+                        newbox.classList.add("box-clicked") // Ajoute une classe à cet élément
+                        if (nb == board.children.length) // Si le numéro qur lequel le joueur doit cliquer est égale au nombre de boîtes du jeu, victoire.
+                        {
+                            board.querySelectorAll(".box").forEach(function(box) // Change la couleur de toutes les boîtes en vert
+                            {
+                                showReaction("success", box)
+                            })
+                        }
+                        nb++ // Incrémente le numéro de la boîte sur laquelle le joueur doit cliquer
+                        shuffleChildren(board)
+                    }
+                    else if (i > nb) // Si le joueur clique une bôite dont le numéro est supérieur à celui attendu
+                    {
+                        showReaction("error", newbox) // change la boîte en rouge
+                        nb = 1 // Reset nb à 1 car le jeu recommence
+                        board.querySelectorAll(".box-clicked").forEach(function(clickedBox) // Reset l'affichagede toutes les boîtes
+                        {
+                            clickedBox.classList.remove("box-clicked")
+                        })
+                    }
+                    else
+                    {
+                        showReaction("notice", newbox) // Change la boîte en bleu
+                    }
+                })
+            }
+
+            shuffleChildren(board)
+        </script>
+    </body>
+</html>
