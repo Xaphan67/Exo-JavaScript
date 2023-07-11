@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <link rel="stylesheet" type="text/css" href="style-exo1.css"/>
+        <title>Exercice 1</title>
+    </head>
+    <body>
+        <div id="main"></div>
+        <script>
+            // Crée un nouvel élément, lui donne une classe et un texte, puisl'ajoute à l'intérieur de la div main
+            const carre = document.createElement("div")
+            carre.classList.add("carre")
+            carre.innerText = "Texte"
+            const main = document.querySelector("#main")
+            main.appendChild(carre)
+
+            // Récupère les styles CSS des éléments passés en paramettres
+            const mainStyles = window.getComputedStyle(main)
+            const styles = window.getComputedStyle(carre)
+
+            // Evènement lors du click sur l'élément carre
+            carre.addEventListener("click", function()
+            {
+                alert("Class : " + carre.classList + 
+                "\nBackground-color : " + styles.getPropertyValue("background-color") +
+                "\nColor : " + styles.getPropertyValue("color") +
+                "\nHeight : " + styles.getPropertyValue("height") +
+                "\nWidth : " + styles.getPropertyValue("width") +
+                "\nDisplay : " + mainStyles.getPropertyValue("display") +
+                "\nDisplay : " + styles.getPropertyValue("font-family") + " (" + styles.getPropertyValue("font-size") + ")")
+            })
+        </script>
+    </body>
+</html>

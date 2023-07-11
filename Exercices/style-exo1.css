@@ -1,0 +1,13 @@
+#main {
+    display: flex;
+}
+
+.carre {
+    width: 200px;
+    height: 200px;
+    background-color: rgb(136, 174, 136);
+    color: white;
+    font-size: 3em;
+    line-height: 200px;
+    text-align: center;
+}
