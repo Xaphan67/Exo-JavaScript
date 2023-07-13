@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="style-exo3.css" />
+    <title>Exercice 3</title>
+</head>
+
+<body>
+    <div id="main"></div>
+    <script>
+        const caseMorpion = document.createElement("div")
+        caseMorpion.classList.add("case")
+
+        const main = document.querySelector("#main")
+
+        let text = "X"
+
+        for (let i = 1; i <= 9; i++) {
+            let nouvelleCase = caseMorpion.cloneNode();
+            main.appendChild(nouvelleCase)
+
+            nouvelleCase.addEventListener("click", function () {
+                if (nouvelleCase.innerText == "") {
+                    nouvelleCase.innerText = text
+                    if (text == "X") {
+                        text = "O"
+                    }
+                    else {
+                        text = "X"
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

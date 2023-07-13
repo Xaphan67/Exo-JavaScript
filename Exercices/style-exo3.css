@@ -1,0 +1,18 @@
+#main {
+    display: flex;
+    flex-wrap: wrap;
+    width: 615px;
+}
+
+.case {
+    width: 200px;
+    height: 200px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border-radius: 15px;
+    background-color: rgb(136, 174, 136);
+    opacity: 0.5;
+    font-size: 5em;
+    line-height: 200px;
+    text-align: center;
+}
