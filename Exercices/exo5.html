@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="style-exo5.css" />
+    <title>Exercice 5</title>
+</head>
+
+<body>
+    <div id="main">Valeur en euros :</div>
+    <script>
+        const main = document.querySelector("#main")
+
+        const input = document.createElement("input")
+        input.classList.add("input")
+        main.appendChild(input)
+
+        let result = 0.00
+
+        const convert = document.createElement("div")
+        convert.innerHTML = result.toFixed(2) + " francs"
+        main.appendChild(convert)  
+    </script>
+</body>
+
+</html>
