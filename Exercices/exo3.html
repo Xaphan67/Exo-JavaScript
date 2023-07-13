@@ -19,6 +19,7 @@
         const infos = document.querySelector("#infos")
 
         let text = "X"
+        let caseActuelle = 1
         infos.innerHTML = "C'est au tour de " + text
 
         for (let i = 1; i <= 9; i++) {
@@ -34,7 +35,13 @@
                     else {
                         text = "X"
                     }
-                    infos.innerHTML = "C'est au tour de " + text
+                    if (caseActuelle < 9) {
+                        infos.innerHTML = "C'est au tour de " + text
+                    }
+                    else {
+                        infos.innerHTML = "Partie terminée !"
+                    }
+                    caseActuelle++
                 }
             })
         }
