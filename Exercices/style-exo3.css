@@ -5,12 +5,13 @@
 }
 
 .case {
-    width: 200px;
-    height: 200px;
+    width: 198px;
+    height: 198px;
     margin-right: 5px;
     margin-bottom: 5px;
     border-radius: 15px;
-    background-color: rgb(136, 174, 136);
+    border: 1px solid black;
+    background-color: lightgrey;
     opacity: 0.5;
     font-size: 5em;
     line-height: 200px;
@@ -20,4 +21,12 @@
 #infos {
     width: 615px;
     text-align: center;
+}
+
+.red {
+    color: red
+}
+
+.green {
+    color: green
 }

@@ -30,9 +30,11 @@
                 if (nouvelleCase.innerText == "") {
                     nouvelleCase.innerText = text
                     if (text == "X") {
+                        nouvelleCase.classList.add("red")
                         text = "O"
                     }
                     else {
+                        nouvelleCase.classList.add("green")
                         text = "X"
                     }
                     if (caseActuelle < 9) {
