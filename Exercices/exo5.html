@@ -8,19 +8,36 @@
 </head>
 
 <body>
-    <div id="main">Valeur en euros :</div>
+    <div id="main">Valeur en euros
+    </div>
     <script>
+        function convertToEuro(value) {
+            if (/^\d+$/.test(value)) { // Expression régulière (regex) pour vérifier que value contient uniquement des chiffres
+                return (value * 6.55957).toFixed(2) + " francs" // toFixex -> Arroundi et limite à 2 chiffres après la virgule
+            }
+            else {
+                return "Vous devez saisir une valeur numérique !"
+            }
+        }
+
+        // Element parent dans lequel les autres éléments sont ajoutés
         const main = document.querySelector("#main")
 
+        // Elément Input
         const input = document.createElement("input")
+        input.placeholder = "Entrez un montant en euros"
         input.classList.add("input")
         main.appendChild(input)
 
-        let result = 0.00
-
+        // Elément contenant le texte affiché en résultat
         const convert = document.createElement("div")
-        convert.innerHTML = result.toFixed(2) + " francs"
-        main.appendChild(convert)  
+        convert.classList.add("convert")
+        main.appendChild(convert)
+
+        // Evènement se produisant quand l'utilisateur tape du texte dans le champ
+        input.addEventListener("input", (event) => {
+            convert.textContent = convertToEuro(event.target.value)
+        })
     </script>
 </body>
 

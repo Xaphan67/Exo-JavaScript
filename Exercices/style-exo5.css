@@ -7,9 +7,17 @@
     height: 500px;
     background-color: lightgrey;
     border-radius: 25px;
+    font-size: 2em;
     color: white;
 }
 
 .input {
+    margin-top: 15px;
     height: 20px;
+    width: 300px;
+}
+
+.convert {
+    margin-top: 15px;
+    font-size: 0.5em;
 }
