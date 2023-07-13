@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="style-exo4.css" />
+    <title>Exercice 4</title>
+</head>
+
+<body>
+    <div id="main"></div>
+    <script>
+        // Génère un code hexadécimal d'une couleur aléatoirement
+        function getCouleurAleatoire() {
+            var caracteres = '0123456789ABCDEF';
+            var couleur = '#';
+            for (var i = 0; i < 6; i++) {
+                couleur += caracteres[Math.floor(Math.random() * 16)];
+            }
+            return couleur;
+        }
+
+        // Element parent dans lequel les carrés sont ajoutés
+        const main = document.querySelector("#main")
+
+        // Crée un nouvel element qui servira de base pour les carrés
+        const carre = document.createElement("div")
+        carre.classList.add("carre")
+
+        // Id du prochain carré à ajouter
+        let carreActuel = 1
+
+        // Evenement se produisant lorque l'utilisateur appuie sur certaines touches du clavier
+        document.addEventListener('keydown', (event) => {
+            if (carreActuel <= 225 && event.key == "ArrowDown") { // 225 carrés max pour une grille de 15x15
+                let nouveauCarre = carre.cloneNode()
+                nouveauCarre.id = carreActuel // Assigne une id au carré
+                nouveauCarre.style.setProperty("background-color", getCouleurAleatoire()) // Ajoute une couleur de fond aléatoire via la fonction getCouleurAleatoire
+                main.appendChild(nouveauCarre)
+                carreActuel++ // Incrémente l'id pour le prochain carré
+            }
+            else if (carreActuel > 1 && event.key == "ArrowUp") { // Au moins 1 carré pour pouvoir le retirer
+                ancienCarre = document.getElementById(carreActuel - 1) // Récupère le caré ayant l'id précédente
+                main.removeChild(ancienCarre)
+                carreActuel-- // Décrémente l'id pour le prochain carré
+            }
+        }, false);
+    </script>
+</body>
+
+</html>
