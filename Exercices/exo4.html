@@ -36,6 +36,11 @@
                 let nouveauCarre = carre.cloneNode()
                 nouveauCarre.id = carreActuel // Assigne une id au carré
                 nouveauCarre.style.setProperty("background-color", getCouleurAleatoire()) // Ajoute une couleur de fond aléatoire via la fonction getCouleurAleatoire
+                nouveauCarre.addEventListener("click", function () { // Evènement se produisant lorsque l'utilsateur clique sur le carré
+                    if (carreActuel > 225) { // Uniquement si la grille est complète
+                        nouveauCarre.style.setProperty("background-color", "#000000") // Change le carré en noir
+                    }
+                })
                 main.appendChild(nouveauCarre)
                 carreActuel++ // Incrémente l'id pour le prochain carré
             }
