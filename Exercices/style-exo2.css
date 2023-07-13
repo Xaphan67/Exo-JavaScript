@@ -14,20 +14,33 @@
     text-align: center;
 }
 
-.carre-clicked {
+.carre-clicked-red {
     background-color: red;
     transform: scale(0.9);
-    animation: appear 1s;
+    animation: turnRed 1s;
 }
 
-@keyframes appear
-{
-    from
-    {
-        transform: scale(0.9) rotate(0deg)
+.carre-clicked-green {
+    background-color: rgb(136, 174, 136);
+    animation: turnGreen 1s;
+}
+
+@keyframes turnRed {
+    from {
+        transform: scale(1) rotate(0deg)
     }
-    to
-    {
-        transform: scale(0.9) rotate(45deg);
+
+    to {
+        transform: scale(0.9) rotate(360deg);
+    }
+}
+
+@keyframes turnGreen {
+    from {
+        transform: scale(0.9) rotate(360deg)
+    }
+
+    to {
+        transform: scale(1) rotate(0deg);
     }
 }

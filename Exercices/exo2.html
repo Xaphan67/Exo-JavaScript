@@ -1,39 +1,43 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <link rel="stylesheet" type="text/css" href="style-exo2.css"/>
-        <title>Exercice 2</title>
-    </head>
-    <body>
-        <div id="main"></div>
-        <script>
-            // Crée un nouvel élément, lui donne une classe et un texte, puisl'ajoute à l'intérieur de la div main
-            const carre = document.createElement("div")
-            carre.classList.add("carre")
 
-            const main = document.querySelector("#main")
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="style-exo2.css" />
+    <title>Exercice 2</title>
+</head>
 
-            for (let i = 1; i <= 4; i++)
-            {
-                let newCarre = carre.cloneNode();
-                newCarre.innerText = i
-                main.appendChild(newCarre)
+<body>
+    <div id="main"></div>
+    <script>
+        // Crée un nouvel élément et lui donne une classe
+        const carre = document.createElement("div")
+        carre.classList.add("carre")
 
-                newCarre.addEventListener("click", function()
-                {
-                    const styles = window.getComputedStyle(newCarre)
-                    if (styles.getPropertyValue("background-color") == "rgb(136, 174, 136)")
-                    {
-                        newCarre.classList.add("carre-clicked")
-                    }
-                    else
-                    {
-                        newCarre.classList.remove("carre-clicked")
-                    }
-                })
-            }
+        const main = document.querySelector("#main")
 
-        </script>
-    </body>
+        // Clone l'élément 4 fois
+        for (let i = 1; i <= 4; i++) {
+            let newCarre = carre.cloneNode();
+            newCarre.innerText = i
+            main.appendChild(newCarre)
+
+            // Ajoute un écouteur d'évènement qui se déclanche au click
+            newCarre.addEventListener("click", function () {
+                const styles = window.getComputedStyle(newCarre) // Récupère les propriétés CSS de l'élément
+                if (styles.getPropertyValue("background-color") == "rgb(136, 174, 136)") { // Si sa couleur d'arrière-plan est rgb(136, 174, 136), lui ajoute la classe pour le faire devenir roug et tourner sur lui-même
+                    newCarre.classList.add("carre-clicked-red")
+                }
+                else { // Sinon, retire la classe rouge et lui ajoute une classe pour le faire tourner à nouveau et re-devenir vert
+                    newCarre.classList.remove("carre-clicked-red")
+                    newCarre.classList.add("carre-clicked-green")
+                    setTimeout(function () { // Attends la fin de l'animation (1000 = 1 seconde), puis retire la classe pour remettre l'élément dans la situation initiale
+                        newCarre.classList.remove("carre-clicked-green")
+                    }, 1000)
+                }
+            })
+        }
+    </script>
+</body>
+
 </html>
