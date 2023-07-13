@@ -9,13 +9,17 @@
 
 <body>
     <div id="main"></div>
+    <div id="infos"></div>
     <script>
         const caseMorpion = document.createElement("div")
         caseMorpion.classList.add("case")
 
         const main = document.querySelector("#main")
 
+        const infos = document.querySelector("#infos")
+
         let text = "X"
+        infos.innerHTML = "C'est au tour de " + text
 
         for (let i = 1; i <= 9; i++) {
             let nouvelleCase = caseMorpion.cloneNode();
@@ -30,6 +34,7 @@
                     else {
                         text = "X"
                     }
+                    infos.innerHTML = "C'est au tour de " + text
                 }
             })
         }
